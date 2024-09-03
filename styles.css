@@ -1,0 +1,1023 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: "Poppins", sans-serif;
+}
+
+:root {
+    --bg-color: #080808;
+    --second-bg-color: #131313;
+    --text-color: white;
+    --main-color: #6fff009d;
+    --bg-image: url('img/green\ dark.jpeg'); /* Ganti dengan path gambar yang ingin digunakan */
+    --bg-image1: url('img/hutan.jpeg');
+    --bg-image3: url('img/pohon.jpeg');
+    --bg-image4: url('img/tanah.jpeg');
+    --bg-image5: url('img/payung.jpeg');
+}
+
+html {
+    font-size: 60%;
+    overflow-x: hidden;
+}
+
+body {
+    background-image: var(--bg-image);
+    color: var(--text-color);
+}
+
+/* Header Styling */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 4rem 12% 4rem;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 3rem;
+    color: var(--text-color);
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+.logo span {
+    text-shadow: 0 0 25px var(--main-color);
+}
+
+.navbar {
+    display: flex;
+}
+
+.navbar a {
+    font-size: 1.8rem;
+    color: var(--text-color);
+    margin-left: 4rem;
+    font-weight: 500;
+    transition: 0.3s ease;
+    border-bottom: 3px solid transparent;
+}
+
+/* Styling saat hover atau link aktif */
+.navbar a:hover,
+.navbar a.active {
+    color: var(--main-color);
+    border-bottom: none;
+}
+
+/* Styling untuk menu icon */
+#menu-icon {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+/* Navbar Mobile Menu */
+.mobile-menu {
+    position: fixed; /* Ensure it stays fixed in place */
+    top: 0;
+    right: 0;
+    width: 250px; /* Adjust width as needed */
+    height: 100vh;
+    background-color: var(--second-bg-color); /* Background color for visibility */
+    transform: translateX(100%); /* Initially hidden off-screen */
+    transition: transform 0.3s ease;
+    overflow: auto;
+    z-index: 1000; /* Higher z-index to ensure it appears on top */
+}
+
+
+.mobile-menu.active {
+    transform: translateX(0); /* Slide in from right */
+}
+
+.mobile-menu a {
+    display: block;
+    padding: 2rem;
+    font-size: 1.5rem;
+    color: #fff;
+    text-align: center;
+    border-bottom: 1px solid #444;
+}
+
+.mobile-menu a:hover {
+    background: var(--main-color);
+}
+
+/* Style for the close button */
+.menu-close {
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: #333;
+}
+
+/* Add some padding or margin to the bottom of the menu */
+.mobile-menu .menu-content {
+    padding-bottom: 4rem; /* Optional: to prevent the last item from being cut off */
+}
+
+section {
+    min-height: 100vh;
+    padding: 10rem 12% 10rem;
+}
+
+.home {
+    position: relative; /* Perlu untuk positioning pseudo-element */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15rem;
+    background: none; /* Hilangkan background default */
+}
+
+.home::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0), rgba(111, 255, 0, 0.616)), var(--bg-image5);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: scaleY(-1); /* Membalikkan gambar secara vertikal */
+    z-index: -1; /* Agar tidak menutupi konten */
+}
+.home-content {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    text-align: left;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+span {
+    color: var(--main-color);
+}
+
+.logo span {
+    color: var(--main-color);
+}
+.home-content h3 {
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+    font-size: 3.5rem;
+}
+
+.home-content h1 {
+    font-size: 7rem;
+    font-weight: 700;
+    margin-top: 1.5rem;
+    line-height: 1;
+}
+
+.home-img {
+    border-radius: 50%;
+}
+
+.home-img img {
+    position: relative;
+    top: 3rem;
+    width: 32vw;
+    border-radius: 50%;
+    box-shadow: 0 0 25px var(--main-color);
+    cursor: pointer;
+    transition: 0.4s ease-in-out;
+}
+
+.home-img img:hover {
+    box-shadow: 0 0 25px var(--main-color),
+                0 0 50px var(--main-color),
+                0 0 100px var(--main-color);
+}
+
+.home-content p {
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.8;
+    max-width: 1000px;
+}
+
+.social-icons a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 4.5rem;
+    height: 4.5rem;
+    background: transparent;
+    border: 2px solid var(--main-color);
+    font-size: 2.5rem;
+    border-radius: 50%;
+    color: var(--main-color);
+    margin: 3rem 1.5rem 3rem 0;
+    transition: 0.3s ease-in-out;
+}
+
+.social-icons a:hover {
+    color: var(--text-color);
+    transform: scale(1.3) translateY(-5px);
+    box-shadow: 0 0 25px var(--main-color);
+    background-color: var(--main-color);
+}
+
+.btn {
+    display: inline-block;
+    padding: 1rem 2.8rem;
+    background: var(--main-color);
+    box-shadow: 0 0 25px var(--main-color);
+    border-radius: 4rem;
+    font-size: 1.6rem;
+    color: black;
+    border: 2px solid transparent;
+    letter-spacing: 0.1rem;
+    font-weight: 600;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 50px var(--main-color);
+}
+
+.btn-group {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+.btn-group a:nth-of-type(2) {
+    background-color: black;
+    color: var(--main-color);
+    border: 2px solid var(--main-color);
+    box-shadow: 0 0 25px transparent;
+}
+
+.btn-group a:nth-of-type(2):hover {
+    box-shadow: 0 0 50px var(--main-color);
+    background-color: var(--main-color);
+    color: black;
+}
+
+.text-animation {
+    font-size: 34px;
+    font-weight: 600;
+    min-width: 280px;
+}
+
+.text-animation span {
+    position: relative;
+}
+
+.text-animation span::before {
+    content: "Web Developer";
+    color: var(--main-color);
+    animation: words 20s infinite;
+}
+
+.text-animation span::after {
+    content: "";
+    background-image: var(--bg-image5);
+    position: absolute;
+    width: calc(100% + 8px);
+    height: 100%;
+    border-left: 3px solid var(--bg-color);
+    right: -8px;
+    animation: cursor 0.6s infinite, typing 20s steps(14) infinite;
+}
+
+@keyframes cursor {
+    to {
+        border-left: 2px solid var(--main-color);
+    }
+}
+
+@keyframes words {
+    0%,
+    20% {
+        content: "Frontend Designer";
+    }
+
+    21%,
+    40% {
+        content: "Web Designer";
+    }
+
+    41%,
+    60% {
+        content: "UI / UX Designer";
+    }
+
+    61%,
+    80% {
+        content: "Web Developer"
+    }
+
+    81%,
+    100% {
+        content: "Software Tester";
+    }
+}
+
+@keyframes typing {
+    10%,
+    15%,
+    30%,
+    35%,
+    50%,
+    55%,
+    70%,
+    75%,
+    90%,
+    95% {
+        width: 0;
+    }
+    5%,
+    20%,
+    25%,
+    40%,
+    45%,
+    60%,
+    65%,
+    80%,
+    85% {
+        width: calc(100% + 8px);
+    }
+}
+
+/* About */
+.about {
+    background-image: linear-gradient(360deg, rgba(0, 0, 0, 0), rgba(111, 255, 0, 0.615)), var(--bg-image5); /* Gunakan variabel yang sama dengan .home */
+    background-size: cover;
+    background-position: center;
+    color: var(--text-color);
+    padding: 10rem 12%;
+}
+
+.about .heading {
+    font-size: 8rem;
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.about-content {
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+}
+
+.about-content p {
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.about-content h3 {
+    font-size: 2.4rem;
+    font-weight: 600;
+    margin-bottom: 3rem;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2rem;
+}
+
+.skill-box {
+    background-color: var(--main-color);
+    padding: 2rem;
+    border-radius: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s ease-in-out;
+    color: var(--bg-color);
+}
+
+.skill-box i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.skill-box h4 {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.skill-box:hover {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+    transform: scale(1.05);
+}
+
+/* End About */
+
+/* Education */
+.education {
+    background: var(--second-bg-color);
+    color: var(--text-color);
+    padding: 10rem 12%;
+    position: relative;
+}
+
+.education::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(111, 255, 0, 0.615)), var(--bg-image4);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.education .heading {
+    font-size: 8rem;
+    text-align: center;
+    margin-bottom: 5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.timeline-items {
+    position: relative;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 2rem;
+}
+
+.timeline-items::before {
+    content: "";
+    position: absolute;
+    width: 4px;
+    height: 100%;
+    background-color: var(--main-color);
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+    z-index: 1;
+}
+
+.timeline-item {
+    margin-bottom: 4rem;
+    position: relative;
+    width: 100%;
+}
+
+.timeline-item:nth-child(odd) {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.timeline-item:nth-child(even) {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.timeline-date,
+.timeline-content {
+    position: relative;
+    z-index: 2;
+}
+
+.timeline-date {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-color);
+    background: var(--main-color);
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 10px var(--main-color);
+    text-align: center;
+    max-width: 200px;
+}
+
+.timeline-content {
+    background: var(--bg-color);
+    color: var(--text-color);
+    padding: 2rem;
+    border: 2px solid var(--main-color);
+    border-radius: 1rem;
+    box-shadow: 0 0 10px var(--main-color);
+    width: calc(100% - 2rem);
+    max-width: 600px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.timeline-content:hover {
+    background: var(--main-color);
+    color: var(--bg-color);
+    transform: scale(1.05);
+}
+
+.timeline-content h3 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.timeline-content p {
+    font-size: 1.4rem;
+    line-height: 1.6;
+}
+
+/* Service */
+.services {
+    background-image: var(--bg-image4);
+    color: var(--text-color);
+    padding: 10rem 5%; /* Menyesuaikan padding */
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0), rgba(111, 255, 0, 0.615)), var(--bg-image4);
+    background-size: cover;
+    background-position: center;
+}
+
+.services .heading {
+    font-size: 6rem; /* Menyesuaikan ukuran font heading */
+    text-align: center;
+    margin-bottom: 4rem; /* Menyesuaikan jarak bawah */
+}
+
+.service-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Menyesuaikan lebar kolom */
+    gap: 2rem;
+}
+
+.service-box {
+    background-color: var(--second-bg-color);
+    padding: 2rem;
+    border-radius: 1.5rem;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: 0.4s ease-in-out;
+    box-shadow: 0 0 15px var(--main-color); /* Menyesuaikan ukuran shadow */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.service-box:hover {
+    background: var(--main-color);
+    color: var(--bg-color);
+    border: 2px solid var(--main-color);
+    transform: scale(1.05);
+}
+
+.service-image {
+    width: 100%;
+    height: 200px; /* Menentukan tinggi tetap untuk semua gambar */
+    border-radius: 1.5rem;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.service-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Menjaga gambar agar tetap proporsional */
+    display: block;
+}
+
+.service-info {
+    text-align: center;
+}
+
+.service-info h4 {
+    font-size: 2rem; /* Menyesuaikan ukuran font h4 */
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.service-info p {
+    font-size: 1.4rem; /* Menyesuaikan ukuran font p */
+    font-weight: 400;
+    line-height: 1.6; /* Menyesuaikan line-height */
+}
+
+/* End Service */
+
+
+/* Projects  */
+.projects {
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(111, 255, 0, 0.615)), var(--bg-image1);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: var(--text-color);
+    padding: 10rem 5%; /* Menyesuaikan padding */
+}
+
+.projects .heading {
+    font-size: 6rem; /* Menyesuaikan ukuran font heading */
+    text-align: center;
+    margin-bottom: 4rem; /* Menyesuaikan jarak bawah */
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Menyesuaikan lebar kolom */
+    gap: 2rem;
+}
+
+.projects-item {
+    background-color: var(--second-bg-color);
+    padding: 2rem;
+    border-radius: 1.5rem;
+    border: 2px solid transparent;
+    transition: 0.4s ease-in-out;
+    box-shadow: 0 0 15px var(--main-color); /* Menyesuaikan ukuran shadow */
+    text-align: center;
+    overflow: hidden;
+}
+
+.projects-item:hover {
+    background: var(--main-color);
+    color: var(--bg-color);
+    border: 2px solid var(--main-color);
+    transform: scale(1.05);
+}
+
+.projects-item video {
+    width: 100%;
+    height: 200px; /* Menentukan tinggi tetap untuk semua video */
+    border-radius: 1.5rem;
+    margin-bottom: 1rem;
+    object-fit: cover; /* Menjaga video tetap proporsional dan mengisi kontainer */
+}
+
+.projects-item h4 {
+    font-size: 2rem; /* Menyesuaikan ukuran font h4 */
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.rating {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.rating i {
+    color: var(--main-color);
+    font-size: 2rem;
+    margin: 0 0.2rem;
+}
+
+.projects-item p {
+    font-size: 1.4rem; /* Menyesuaikan ukuran font p */
+    font-weight: 400;
+    line-height: 1.6; /* Menyesuaikan line-height */
+}
+
+/* End Projects */
+
+
+/* Contact */
+.contact {
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0), rgba(111, 255, 0, 0.615)), var(--bg-image1);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: var(--text-color);
+    padding: 10rem 12%;
+}
+
+.contact .heading {
+    font-size: 8rem;
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.contact-info, .contact-form {
+    flex: 1;
+    min-width: 300px;
+    margin: 1rem;
+    background-color: var(--second-bg-color);
+    padding: 2rem;
+    border-radius: 1.5rem;
+    border: 2px solid transparent;
+    box-shadow: 0 0 25px var(--main-color);
+}
+
+.contact-info h4 {
+    font-size: 2.4rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.contact-info p {
+    font-size: 1.6rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.contact-info ul {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-info ul li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+}
+
+.contact-info ul li i {
+    color: var(--main-color);
+    font-size: 2rem;
+    margin-right: 1rem;
+}
+
+.contact-info ul li span {
+    font-weight: 600;
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 2px solid var(--main-color);
+    border-radius: 1rem;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-size: 1.6rem;
+}
+
+.contact-form .btn {
+    padding: 1rem 2rem;
+    background-color: var(--main-color);
+    color: var(--bg-color);
+    border: none;
+    border-radius: 1rem;
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form .btn:hover {
+    background-color: var(--text-color);
+}
+
+
+/* End Contact */
+
+/* Footer */
+.footer {
+    background: var(--second-bg-color);
+    color: var(--text-color);
+    padding: 2rem 12%;
+    text-align: center;
+    border-top: 2px solid var(--main-color);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.footer p {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+}
+
+.footer-social {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.footer-social li {
+    display: inline;
+}
+
+.footer-social a {
+    color: var(--text-color);
+    font-size: 2rem;
+    transition: color 0.3s ease;
+}
+
+.footer-social a:hover {
+    color: var(--main-color);
+}
+
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+    .header {
+        padding: 4rem 6%;
+    }
+    .home {
+        flex-direction: column;
+        gap: 5rem;
+    }
+    .home-content h1 {
+        font-size: 5rem;
+    }
+    .home-img img {
+        width: 50vw;
+    }
+    .about .heading {
+        font-size: 6rem;
+    }
+    .education {
+        padding: 8rem 5%;
+    }
+    .education .heading {
+        font-size: 6rem;
+    }
+    .timeline-items {
+        padding: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 3rem 5%;
+    }
+    .logo {
+        font-size: 2.5rem;
+    }
+    #menu-icon {
+        display: block; /* Menampilkan menu ikon pada layar kecil */
+    }
+    
+    .navbar {
+        display: none; /* Menyembunyikan navbar pada tampilan mobile */
+    }
+    .mobile-menu {
+        display: block; /* Tampilkan menu mobile */
+    }
+    .home-content h1 {
+        font-size: 4rem;
+    }
+    .home-img img {
+        width: 60vw;
+    }
+    .about .heading {
+        font-size: 5rem;
+    }
+    .education {
+        padding: 6rem 3%;
+    }
+    .education .heading {
+        font-size: 5rem;
+    }
+    .timeline-item {
+        margin-bottom: 3rem;
+    }
+    .timeline-date {
+        font-size: 1.6rem;
+        padding: 0.8rem 1.6rem;
+    }
+    .timeline-content {
+        padding: 1.6rem;
+    }
+    .services .heading {
+        font-size: 6rem;
+    }
+    .service-box {
+        padding: 1rem;
+    }
+    .contact .heading {
+        font-size: 5rem;
+    }
+    .footer p {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 2rem 3%;
+    }
+    .logo {
+        font-size: 2rem;
+    }
+    #menu-icon {
+        font-size: 2.5rem;
+    }
+    .home-content h1 {
+        font-size: 3rem;
+    }
+    .home-img img {
+        width: 80vw;
+    }
+    .about .heading {
+        font-size: 4rem;
+    }
+    .education {
+        padding: 4rem 2%;
+    }
+    .education .heading {
+        font-size: 4rem;
+    }
+    .timeline-item {
+        margin-bottom: 2rem;
+    }
+    .timeline-date {
+        font-size: 1.4rem;
+        padding: 0.6rem 1.2rem;
+    }
+    .timeline-content {
+        padding: 1rem;
+    }
+    .services .heading {
+        font-size: 4rem;
+    }
+    .service-box {
+        padding: 0.5rem;
+    }
+    .contact .heading {
+        font-size: 4rem;
+    }
+    .footer p {
+        font-size: 1rem;
+    }
+}
+
+/* Modal Alert */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: var(--second-bg-color);
+    margin: 10% auto; /* Centered vertically and horizontally */
+    padding: 2rem;
+    border-radius: 8px;
+    width: 80%; /* Adjust as needed */
+    max-width: 500px; /* Limit max width */
+    text-align: center;
+    color: var(--text-color);
+}
+
+/* The Close Button */
+.close-btn {
+    color: var(--text-color);
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: var(--main-color);
+}
+
+/* Alert Message */
+#alert-message {
+    margin-top: 1rem;
+    font-size: 1.6rem;
+}
