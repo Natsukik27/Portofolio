@@ -442,6 +442,11 @@
                 };
             }
         });
+
+        document.querySelector('.logo').addEventListener('click', function(e) {
+    e.preventDefault(); // Mencegah perilaku default dari anchor tag
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll ke atas dengan efek smooth
+});
     </script>
 
 </body>
